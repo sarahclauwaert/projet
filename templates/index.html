@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/csspageappel.css">
+        <title>Ma Page</title>
+        <script>
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "Ficheappel.html";
+            a.click();
+            URL.revokeObjectURL(url);
+        </script>
+    </head>
+    <body>
+        <img src="../static/logoismag.jpg" alt="Logo de l'entreprise">
+        <h1>Ou bien sélectionnez un jour</h1>
+        <div>
+            <form method="POST" action="/traiter">
+                <label for="periodeDebut">De :</label>
+                <input type="date" id="periodeDebut" placeholder="Date de début">
+                <input type="time" id="heureDebut" placeholder="Heure de début">
+                <label for="periodeFin">À :</label>
+                <input type="date" id="periodeFin" placeholder="Date de fin">
+                <input type="time" id="heureFin" placeholder="Heure de fin">
+                <button type="submit">validé</button>
+            </form>
+        </div>
+        <h1>Déposer une liste d'étudiants</h1>
+    <form action="traitement.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="fichier" id="fichier">
+        <input type="submit" value="Déposer la liste">
+    </form>
+    <a href="#" id="telechargerPage">Télécharger la page</a>
+    <script>
+        document.getElementById("telechargerPage").addEventListener("click", function () {
+            // Ajoutez ici la logique pour télécharger la page.
+            // Vous pouvez utiliser JavaScript pour créer un fichier téléchargeable dynamiquement.
+            var pageHTML = document.documentElement.outerHTML;
+            var blob = new Blob([pageHTML], { type: "text/html" });
+            var url = URL.createObjectURL(blob);
+        });
+    </script>
+</body>
+</html>
